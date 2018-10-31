@@ -14,12 +14,12 @@ function resize(){
 }
 
 window.addEventListener("resize", resize);
-document.addEventListener("mousemove", onMouseMove);
-document.addEventListener("touchmove", onMouseMove);
-document.addEventListener("mousedown", onMouseDown);
-document.addEventListener("touchstart", onMouseDown);
-document.addEventListener("mouseup", onMouseUp);
-document.addEventListener("touchend", onMouseUp);
+document.addEventListener("mousemove", mouseMove);
+document.addEventListener("touchmove", mouseMove);
+document.addEventListener("mousedown", pressDown);
+document.addEventListener("touchstart", pressDown);
+document.addEventListener("mouseup", pressUp);
+document.addEventListener("touchend", pressUp);
 
 
 
@@ -29,7 +29,7 @@ var pos = {x: 0, y: 0, size: document.getElementById("penSize").value,
 
 
 
-function onMouseMove(e){
+function pressUp(e){
     if (!drawing) { return; }
     draw(pos.x, pos.y, e.clientX, e.clientY, pos.color, pos.size, true);
     pos.size= document.getElementById("penSize").value;
@@ -38,14 +38,14 @@ function onMouseMove(e){
     pos.y = e.clientY;
   }
 
-function onMouseDown(e){
+function pressDown(e){
   drawing = true;
   pos.size= document.getElementById("penSize").value;
   pos.color= document.getElementById("colorSel").value;
   pos.x = e.clientX;
   pos.y = e.clientY;
 }
-function onMouseUp(e){
+function mouseMove(e){
     if (!drawing) {
       return;
     }
