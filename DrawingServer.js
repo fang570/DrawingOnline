@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 
 http.listen(port, () => console.log('listening on port ' + port));
 
-app.use(express.static(__dirname + '/DrawWeb'));
+app.use(express.static(__dirname + '/../../DrawWeb'));
 
 
 io.on('connection', function(socket) {
