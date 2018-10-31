@@ -29,7 +29,7 @@ var pos = {x: 0, y: 0, size: document.getElementById("penSize").value,
 
 
 
-function pressUp(e){
+function mouseMove(e){
     if (!drawing) { return; }
     draw(pos.x, pos.y, e.clientX, e.clientY, pos.color, pos.size, true);
     pos.size= document.getElementById("penSize").value;
@@ -45,7 +45,7 @@ function pressDown(e){
   pos.x = e.clientX;
   pos.y = e.clientY;
 }
-function mouseMove(e){
+function pressUp(e){
     if (!drawing) {
       return;
     }
