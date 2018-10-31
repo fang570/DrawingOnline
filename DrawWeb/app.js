@@ -15,8 +15,13 @@ function resize(){
 
 window.addEventListener("resize", resize);
 document.addEventListener("mousemove", onMouseMove);
+document.addEventListener("touchmove", onMouseMove);
 document.addEventListener("mousedown", onMouseDown);
+document.addEventListener("touchstart", onMouseDown);
 document.addEventListener("mouseup", onMouseUp);
+document.addEventListener("touchend", onMouseUp);
+
+
 
 var pos = {x: 0, y: 0, size: document.getElementById("penSize").value,
               color: document.getElementById("colorSel").value};
