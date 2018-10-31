@@ -1,4 +1,4 @@
-var socket = io.connect('https://drawing-app-node.herokuapp.com:3000/');
+var socket = io.connect('https://drawing-app-node.herokuapp.com:17287/');
 
 var canvas = document.getElementById("draw");
 var drawing = false;
