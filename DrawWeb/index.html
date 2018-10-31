@@ -1,0 +1,27 @@
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <title>
+          Online WhiteBoard
+      </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="draw.css">
+
+
+    </head>
+
+    <body>
+        <div id="buttons">
+            <form>
+            Size Selector:
+            <input type="text" name="Pen Size" id="penSize" value="" />
+            Color:
+            <input type="color" name="colorPicker" id="colorSel" value="#ff0000">
+            </form>
+        </div>
+        <canvas id="draw"></canvas>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/app.js"></script>
+    </body>
+</html>
