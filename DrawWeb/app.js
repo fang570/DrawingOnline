@@ -18,7 +18,7 @@ document.addEventListener("mousemove", mouseMove);
 document.addEventListener("mousedown", pressDown);
 document.addEventListener("mouseup", pressUp);
 document.addEventListener("touchstart", pressDown, false);
-document.addEventListener("touchmove", touchMove, true);
+document.addEventListener("touchmove", touchMove, false);
 document.addEventListener("touchend", pressUp, false);
 
 
@@ -32,13 +32,23 @@ clear.addEventListener("click", function(event){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
+function touchDown(e){
+    drawing = true;
+    pos.size= document.getElementById("penSize").value;
+    pos.color= document.getElementById("colorSel").value;
+    pos.x = e.touches[0].clientX;
+    pos.y = e.touches[0].clientY;
+}
+
 function touchMove(e){
+  e.preventDefault();
   if (!drawing) { return; }
   draw(pos.x, pos.y, e.touches[0].clientX, e.touches[0].clientY, pos.color, pos.size, true);
   pos.size= document.getElementById("penSize").value;
   pos.color= document.getElementById("colorSel").value;
   pos.x = event.touches[0].clientX;
   pos.y = event.touches[0].clientY;
+
 }
 
 
@@ -49,7 +59,6 @@ function mouseMove(e){
     pos.color= document.getElementById("colorSel").value;
     pos.x = e.clientX;
     pos.y = e.clientY;
-    console.log(pos.x + " " + pos.y);
 
   }
 
@@ -68,14 +77,6 @@ function pressUp(e){
     drawing = false;
     draw(pos.x, pos.y, e.clientX, e.clientY, pos.color, pos.size, true);
   }
-
-  function touchUp(e){
-      if (!drawing) {
-        return;
-      }
-      drawing = false;
-      draw(pos.x, pos.y, e.touches[0].clientX, e.touches[0].clientY, pos.color, pos.size, true);
-    }
 
 
 function draw(x, y, x1, y1, color, size, emit) {
